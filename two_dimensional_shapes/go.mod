@@ -1,3 +1,0 @@
-module github.com/marcanthonyconcepcion/MarcGoLangTestDrivenDevelopmentDemo/two_dimensional_shapes
-
-go 1.16

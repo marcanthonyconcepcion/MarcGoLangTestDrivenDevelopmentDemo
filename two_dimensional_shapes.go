@@ -3,9 +3,10 @@
  * Marc Concepcion
  * marcanthonyconcepcion@gmail.com
  */
-package two_dimensional_shapes
+package MarcGoLangTestDrivenDevelopmentDemo
 
 import (
+	"errors"
 	"math"
 )
 
@@ -50,4 +51,25 @@ func (square Square) get_area() float64 {
 }
 func (square Square) get_perimeter() float64 {
 	return square.Rectangle.get_perimeter()
+}
+
+type Triangle struct {
+	a float64
+	b float64
+	c float64
+}
+
+func makeTriangle(a float64, b float64, c float64) (*Triangle, error) {
+	if !(a+b > c && a+c > b && b+c > a) {
+		return nil, errors.New("invalid triangle")
+	}
+	return &Triangle{a, b, c}, nil
+}
+
+func (triangle Triangle) get_area() float64 {
+	half_perimeter := triangle.get_perimeter() / 2
+	return math.Sqrt(half_perimeter * (half_perimeter - triangle.a) * (half_perimeter - triangle.b) * (half_perimeter - triangle.c))
+}
+func (triangle Triangle) get_perimeter() float64 {
+	return triangle.a + triangle.b + triangle.c
 }
