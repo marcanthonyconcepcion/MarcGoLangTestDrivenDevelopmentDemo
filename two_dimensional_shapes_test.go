@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021.
+ * Copyrighdt (c) 2021.
  * Marc Concepcion
  * marcanthonyconcepcion@gmail.com
  */
@@ -78,7 +78,7 @@ func TestTriangle(t *testing.T) {
 	actual_perimeter := triangle.get_perimeter()
 	expected_perimeter := a + b + c
 	if expected_perimeter != actual_perimeter {
-		t.Errorf("Expected triangle perimeter should be %f. However, actual triangle perimeter is wrongly computed as %f.", expected_area, actual_area)
+		t.Errorf("Expected triangle perimeter should be %f. However, actual triangle perimeter is wrongly computed as %f.", expected_perimeter, actual_perimeter)
 	}
 }
 
