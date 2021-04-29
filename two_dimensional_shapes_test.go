@@ -1,5 +1,5 @@
 /*
- * Copyrighdt (c) 2021.
+ * Copyright (c) 2021.
  * Marc Concepcion
  * marcanthonyconcepcion@gmail.com
  */
@@ -7,12 +7,18 @@ package MarcGoLangTestDrivenDevelopmentDemo
 
 import (
 	"math"
+	"math/rand"
 	"testing"
+	"time"
 )
 
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 func TestRectangle(t *testing.T) {
-	length := float64(10.45)
-	width := float64(20)
+	length := rand.Float64() * float64(rand.Int())
+	width := rand.Float64() * float64(rand.Int())
 	rectangle := Rectangle{length: length, width: width}
 
 	expected_area := length * width
@@ -29,7 +35,7 @@ func TestRectangle(t *testing.T) {
 }
 
 func TestCircle(t *testing.T) {
-	radius := float64(10)
+	radius := rand.Float64() * float64(rand.Int())
 	circle := Circle{radius: radius}
 
 	expected_area := math.Pi * math.Pow(radius, 2)
@@ -46,7 +52,7 @@ func TestCircle(t *testing.T) {
 }
 
 func TestSquare(t *testing.T) {
-	side := float64(10)
+	side := rand.Float64() * float64(rand.Int())
 	square := makeSquare(side)
 
 	expected_area := math.Pow(side, 2)
@@ -63,9 +69,9 @@ func TestSquare(t *testing.T) {
 }
 
 func TestTriangle(t *testing.T) {
-	a := float64(70)
-	b := float64(100.64)
-	c := float64(50)
+	a := float64(70) + rand.Float64()
+	b := float64(100) + rand.Float64()
+	c := float64(50) + rand.Float64()
 	half_perimeter := (a + b + c) / 2
 
 	triangle, _ := makeTriangle(a, b, c)
@@ -83,27 +89,35 @@ func TestTriangle(t *testing.T) {
 }
 
 func TestInvalidTriangles(t *testing.T) {
-	a1 := float64(10)
-	b1 := float64(20)
-	c1 := float64(30)
+	a1 := float64(5) + rand.Float64()
+	b1 := float64(20) + rand.Float64()
+	c1 := float64(30) + rand.Float64()
 	_, error1 := makeTriangle(a1, b1, c1)
 	if error1 == nil {
 		t.Errorf("Error has not been raised. Please check your codes on making this triangle.")
 	}
 
-	a2 := float64(10)
-	b2 := float64(31)
-	c2 := float64(20)
+	a2 := float64(7) + rand.Float64()
+	b2 := float64(31) + rand.Float64()
+	c2 := float64(20) + rand.Float64()
 	_, error2 := makeTriangle(a2, b2, c2)
 	if error2 == nil {
 		t.Errorf("Error has not been raised. Please check your codes on making this triangle.")
 	}
 
-	a3 := float64(40)
-	b3 := float64(11)
-	c3 := float64(22)
+	a3 := float64(40) + rand.Float64()
+	b3 := float64(11) + rand.Float64()
+	c3 := float64(22) + rand.Float64()
 	_, error3 := makeTriangle(a3, b3, c3)
 	if error3 == nil {
+		t.Errorf("Error has not been raised. Please check your codes on making this triangle.")
+	}
+
+	a4 := float64(10)
+	b4 := float64(20)
+	c4 := float64(30)
+	_, error4 := makeTriangle(a4, b4, c4)
+	if error4 == nil {
 		t.Errorf("Error has not been raised. Please check your codes on making this triangle.")
 	}
 }

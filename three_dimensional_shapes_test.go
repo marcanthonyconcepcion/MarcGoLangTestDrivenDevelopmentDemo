@@ -7,8 +7,14 @@ package MarcGoLangTestDrivenDevelopmentDemo
 
 import (
 	"math"
+	"math/rand"
 	"testing"
+	"time"
 )
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
 
 type TwoDimensionalShapeMock struct{}
 
@@ -25,9 +31,9 @@ func (twoDimensionalShapeMock TwoDimensionalShapeMock) get_perimeter() float64 {
 }
 
 func TestPrism(t *testing.T) {
-	length := float64(40)
-	width := float64(50.35)
-	height := float64(60)
+	length := rand.Float64() * float64(rand.Int())
+	width := rand.Float64() * float64(rand.Int())
+	height := rand.Float64() * float64(rand.Int())
 	base_rectangle_area := length * width
 	base_rectangle_perimeter := 2*length + width
 	shape := TwoDimensionalShapeMock{}
@@ -51,9 +57,9 @@ func TestPrism(t *testing.T) {
 }
 
 func TestRectangularPrism(t *testing.T) {
-	length := float64(10)
-	width := float64(20)
-	height := float64(30)
+	length := rand.Float64() * float64(rand.Int())
+	width := rand.Float64() * float64(rand.Int())
+	height := rand.Float64() * float64(rand.Int())
 
 	base_rectangle_area := length * width
 	base_rectangle_perimeter := 2 * (length + width)
@@ -72,10 +78,10 @@ func TestRectangularPrism(t *testing.T) {
 }
 
 func TestTriangularPrism(t *testing.T) {
-	a := float64(20)
-	b := float64(30)
-	c := float64(40)
-	height := float64(30)
+	a := float64(20) + rand.Float64()
+	b := float64(30) + rand.Float64()
+	c := float64(40) + rand.Float64()
+	height := rand.Float64() * float64(rand.Int())
 	base_triangle_perimeter := a + b + c
 	base_triangle_half_perimeter := base_triangle_perimeter / 2
 	base_triangle_area := math.Sqrt(base_triangle_half_perimeter * (base_triangle_half_perimeter - a) * (base_triangle_half_perimeter - b) * (base_triangle_half_perimeter - c))
@@ -94,8 +100,8 @@ func TestTriangularPrism(t *testing.T) {
 }
 
 func TestCylinder(t *testing.T) {
-	radius := float64(10)
-	height := float64(30)
+	radius := rand.Float64() * float64(rand.Int())
+	height := rand.Float64() * float64(rand.Int())
 	base_circle_area := math.Pi * math.Pow(radius, 2)
 	base_circle_perimeter := 2 * math.Pi * radius
 
@@ -121,7 +127,7 @@ func TestCylinder(t *testing.T) {
 }
 
 func TestSphere(t *testing.T) {
-	radius := float64(10)
+	radius := rand.Float64() * float64(rand.Int())
 	sphere := Sphere{radius}
 	actual_volume := sphere.get_volume()
 	expected_volume := 4 * math.Pi * math.Pow(radius, 3) / 3
@@ -136,7 +142,7 @@ func TestSphere(t *testing.T) {
 }
 
 func TestCube(t *testing.T) {
-	side := float64(10)
+	side := rand.Float64() * float64(rand.Int())
 	base_square_area := math.Pow(side, 2)
 	base_square_perimeter := 4 * side
 
