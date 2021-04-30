@@ -47,6 +47,8 @@ Go lang's dual function return (the other for error return) is actually a better
 
 Through this Go lang's TDD demo, I realize that Go lang actually simplifies programming. It challenges and shatters our well-known and well-upheld ideology on good coding making us realize that there could be a significantly different way of coding better. 
 
-By setting aside C++ and the popular languages right after (C#, Java, PHP, Python, Perl etc.) and going back to C language,
+By setting aside C++ and the popular languages right after (C#, Java, PHP, Python, Perl etc.) and going back the C language to start a new progressive path on good programming,
 
 Go actually opens my eyes and expands my mind on exploring a different paradigm of coding better without sacrificing basic principles of good programming.
+
+There is a big promise on Go lang. As a programming language made by Google, I expect lots of support and an instant wealth of frameworks and modules that would quickly promote the use of this young language.
