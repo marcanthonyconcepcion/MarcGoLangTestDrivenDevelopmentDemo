@@ -52,3 +52,7 @@ By setting aside C++ and the popular languages right after (C#, Java, PHP, Pytho
 Go actually opens my eyes and expands my mind on exploring a different paradigm of coding better without sacrificing basic principles of good programming.
 
 There is a big promise on Go lang. As a programming language made by Google, I expect lots of support and an instant wealth of frameworks and modules that would quickly promote the use of this young language.
+
+Finally, my advice to you all using some Filipino Tagalog words:
+
+# GO lang ng GO!
