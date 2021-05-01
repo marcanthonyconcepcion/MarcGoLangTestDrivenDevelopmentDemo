@@ -17,12 +17,16 @@ Here are the two-dimensional shapes described by the project:
 3. Square
 4. Triangle
 
-*Please take note that I treat the circumference of a circle as its perimeter based from this statement from Wikipedia: "The perimeter of a circle or ellipse is called its circumference." Source: https://en.wikipedia.org/wiki/Perimeter
-Here are the three-dimensional shapes described by the project:
+*Please take note that I treat the circumference of a circle as its perimeter based from this statement from Wikipedia: "The perimeter of a circle or ellipse is called its circumference." 
+
+Source: https://en.wikipedia.org/wiki/Perimeter
+
 
 ## Three-Dimensional Shapes.
 
 For each of the Three-Dimensional Shape, its surface area and volume properties are defined.
+
+Here are the three-dimensional shapes described by the project:
 
 1. Prism
 2. Cube
