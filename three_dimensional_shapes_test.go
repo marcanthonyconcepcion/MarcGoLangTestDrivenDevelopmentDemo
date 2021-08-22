@@ -1,8 +1,6 @@
-/*
- * Copyright (c) 2021.
- * Marc Concepcion
- * marcanthonyconcepcion@gmail.com
- */
+// Copyright (c) 2021.
+// Marc Concepcion
+// marcanthonyconcepcion@gmail.com
 package MarcGoLangTestDrivenDevelopmentDemo
 
 import (
@@ -20,13 +18,13 @@ type TwoDimensionalShapeMock struct{}
 
 var getAreaMock func() float64
 
-func (twoDimensionalShapeMock TwoDimensionalShapeMock) get_area() float64 {
+func (twoDimensionalShapeMock TwoDimensionalShapeMock) getArea() float64 {
 	return getAreaMock()
 }
 
 var getPerimeterMock func() float64
 
-func (twoDimensionalShapeMock TwoDimensionalShapeMock) get_perimeter() float64 {
+func (twoDimensionalShapeMock TwoDimensionalShapeMock) getPerimeter() float64 {
 	return getPerimeterMock()
 }
 
@@ -34,25 +32,25 @@ func TestPrism(t *testing.T) {
 	length := rand.Float64() * float64(rand.Int())
 	width := rand.Float64() * float64(rand.Int())
 	height := rand.Float64() * float64(rand.Int())
-	base_rectangle_area := length * width
-	base_rectangle_perimeter := 2*length + width
+	baseRectangleArea := length * width
+	baseRectanglePerimeter := 2*length + width
 	shape := TwoDimensionalShapeMock{}
 	getAreaMock = func() float64 {
-		return base_rectangle_area
+		return baseRectangleArea
 	}
 	getPerimeterMock = func() float64 {
-		return base_rectangle_perimeter
+		return baseRectanglePerimeter
 	}
 	prism := makePrism(height, shape)
-	actual_volume := prism.get_volume()
-	expected_volume := height * base_rectangle_area
-	if expected_volume != actual_volume {
-		t.Errorf("Expected prism volume should be %f. However, actual prism volume is wrongly computed as %f.", expected_volume, actual_volume)
+	actualVolume := prism.getVolume()
+	expectedVolume := height * baseRectangleArea
+	if expectedVolume != actualVolume {
+		t.Errorf("Expected prism volume should be %f. However, actual prism volume is wrongly computed as %f.", expectedVolume, actualVolume)
 	}
-	actual_surface_area := prism.get_surface_area()
-	expected_surface_area := 2*base_rectangle_area + height*base_rectangle_perimeter
-	if expected_surface_area != actual_surface_area {
-		t.Errorf("Expected prism surface area should be %f. However, actual prism surface area is wrongly computed as %f.", expected_surface_area, actual_surface_area)
+	actualSurfaceArea := prism.getSurfaceArea()
+	expectedSurfaceArea := 2*baseRectangleArea + height*baseRectanglePerimeter
+	if expectedSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected prism surface area should be %f. However, actual prism surface area is wrongly computed as %f.", expectedSurfaceArea, actualSurfaceArea)
 	}
 }
 
@@ -61,19 +59,19 @@ func TestRectangularPrism(t *testing.T) {
 	width := rand.Float64() * float64(rand.Int())
 	height := rand.Float64() * float64(rand.Int())
 
-	base_rectangle_area := length * width
-	base_rectangle_perimeter := 2 * (length + width)
+	baseRectangleArea := length * width
+	baseRectanglePerimeter := 2 * (length + width)
 
-	rectangular_prism := makeRectangularPrism(length, width, height)
-	actual_volume := rectangular_prism.get_volume()
-	expected_volume := height * base_rectangle_area
-	if expected_volume != actual_volume {
-		t.Errorf("Expected rectangular prism volume should be %f. However, actual rectangular prism volume is wrongly computed as %f.", expected_volume, actual_volume)
+	rectangularPrism := makeRectangularPrism(length, width, height)
+	actualVolume := rectangularPrism.getVolume()
+	expectedVolume := height * baseRectangleArea
+	if expectedVolume != actualVolume {
+		t.Errorf("Expected rectangular prism volume should be %f. However, actual rectangular prism volume is wrongly computed as %f.", expectedVolume, actualVolume)
 	}
-	actual_surface_area := rectangular_prism.get_surface_area()
-	expected_surface_area := 2*base_rectangle_area + height*base_rectangle_perimeter
-	if expected_surface_area != actual_surface_area {
-		t.Errorf("Expected rectangular prism surface area should be %f. However, actual rectangular prism surface area is wrongly computed as %f.", expected_surface_area, actual_surface_area)
+	actualSurfaceArea := rectangularPrism.getSurfaceArea()
+	expectedSurfaceArea := 2*baseRectangleArea + height*baseRectanglePerimeter
+	if expectedSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected rectangular prism surface area should be %f. However, actual rectangular prism surface area is wrongly computed as %f.", expectedSurfaceArea, actualSurfaceArea)
 	}
 }
 
@@ -82,87 +80,87 @@ func TestTriangularPrism(t *testing.T) {
 	b := float64(30) + rand.Float64()
 	c := float64(40) + rand.Float64()
 	height := rand.Float64() * float64(rand.Int())
-	base_triangle_perimeter := a + b + c
-	base_triangle_half_perimeter := base_triangle_perimeter / 2
-	base_triangle_area := math.Sqrt(base_triangle_half_perimeter * (base_triangle_half_perimeter - a) * (base_triangle_half_perimeter - b) * (base_triangle_half_perimeter - c))
+	baseTrianglePerimeter := a + b + c
+	baseTriangleHalfPerimeter := baseTrianglePerimeter / 2
+	baseTriangleArea := math.Sqrt(baseTriangleHalfPerimeter * (baseTriangleHalfPerimeter - a) * (baseTriangleHalfPerimeter - b) * (baseTriangleHalfPerimeter - c))
 
-	triangular_prism := makeTriangularPrism(a, b, c, height)
-	actual_volume := triangular_prism.get_volume()
-	expected_volume := height * base_triangle_area
-	if expected_volume != actual_volume {
-		t.Errorf("Expected triangular prism volume should be %f. However, actual triangular prism volume is wrongly computed as %f.", expected_volume, actual_volume)
+	triangularPrism := makeTriangularPrism(a, b, c, height)
+	actualVolume := triangularPrism.getVolume()
+	expectedVolume := height * baseTriangleArea
+	if expectedVolume != actualVolume {
+		t.Errorf("Expected triangular prism volume should be %f. However, actual triangular prism volume is wrongly computed as %f.", expectedVolume, actualVolume)
 	}
-	actual_surface_area := triangular_prism.get_surface_area()
-	expected_surface_area := 2*base_triangle_area + height*base_triangle_perimeter
-	if expected_surface_area != actual_surface_area {
-		t.Errorf("Expected triangular prism surface area should be %f. However, actual triangular prism surface area is wrongly computed as %f.", expected_surface_area, actual_surface_area)
+	actualSurfaceArea := triangularPrism.getSurfaceArea()
+	expectedSurfaceArea := 2*baseTriangleArea + height*baseTrianglePerimeter
+	if expectedSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected triangular prism surface area should be %f. However, actual triangular prism surface area is wrongly computed as %f.", expectedSurfaceArea, actualSurfaceArea)
 	}
 }
 
 func TestCylinder(t *testing.T) {
 	radius := rand.Float64() * float64(rand.Int())
 	height := rand.Float64() * float64(rand.Int())
-	base_circle_area := math.Pi * math.Pow(radius, 2)
-	base_circle_perimeter := 2 * math.Pi * radius
+	baseCircleArea := math.Pi * math.Pow(radius, 2)
+	baseCirclePerimeter := 2 * math.Pi * radius
 
 	cylinder := makeCylinder(height, radius)
-	actual_volume := cylinder.get_volume()
-	expected_prism_volume := height * base_circle_area
-	if expected_prism_volume != actual_volume {
-		t.Errorf("Expected cylinder volume should be %f. However, actual cylinder volume is wrongly computed as %f.", expected_prism_volume, actual_volume)
+	actualVolume := cylinder.getVolume()
+	expectedPrismVolume := height * baseCircleArea
+	if expectedPrismVolume != actualVolume {
+		t.Errorf("Expected cylinder volume should be %f. However, actual cylinder volume is wrongly computed as %f.", expectedPrismVolume, actualVolume)
 	}
-	actual_surface_area := cylinder.get_surface_area()
-	expected_prism_surface_area := 2*base_circle_area + height*base_circle_perimeter
-	if expected_prism_surface_area != actual_surface_area {
-		t.Errorf("Expected cylinder surface area should be %f. However, actual cylinder surface area is wrongly computed as %f.", expected_prism_surface_area, actual_surface_area)
+	actualSurfaceArea := cylinder.getSurfaceArea()
+	expectedPrismSurfaceArea := 2*baseCircleArea + height*baseCirclePerimeter
+	if expectedPrismSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected cylinder surface area should be %f. However, actual cylinder surface area is wrongly computed as %f.", expectedPrismSurfaceArea, actualSurfaceArea)
 	}
-	expected_calculated_volume := math.Pi * math.Pow(radius, 2) * height
-	if expected_calculated_volume != actual_volume {
-		t.Errorf("Expected cylinder volume should be %f. However, actual cylinder volume is wrongly computed as %f.", expected_calculated_volume, actual_volume)
+	expectedCalculatedVolume := math.Pi * math.Pow(radius, 2) * height
+	if expectedCalculatedVolume != actualVolume {
+		t.Errorf("Expected cylinder volume should be %f. However, actual cylinder volume is wrongly computed as %f.", expectedCalculatedVolume, actualVolume)
 	}
-	expected_calculated_surface_area := 2*math.Pi*radius*height + 2*math.Pi*math.Pow(radius, 2)
-	if expected_calculated_surface_area != actual_surface_area {
-		t.Errorf("Expected cylinder surface area should be %f. However, actual cylinder surface area is wrongly computed as %f.", expected_calculated_surface_area, actual_surface_area)
+	expectedCalculatedSurfaceArea := 2*math.Pi*radius*height + 2*math.Pi*math.Pow(radius, 2)
+	if expectedCalculatedSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected cylinder surface area should be %f. However, actual cylinder surface area is wrongly computed as %f.", expectedCalculatedSurfaceArea, actualSurfaceArea)
 	}
 }
 
 func TestSphere(t *testing.T) {
 	radius := rand.Float64() * float64(rand.Int())
 	sphere := Sphere{radius}
-	actual_volume := sphere.get_volume()
-	expected_volume := 4 * math.Pi * math.Pow(radius, 3) / 3
-	if expected_volume != actual_volume {
-		t.Errorf("Expected sphere volume should be %f. However, actual sphere volume is wrongly computed as %f.", expected_volume, actual_volume)
+	actualVolume := sphere.getVolume()
+	expectedVolume := 4 * math.Pi * math.Pow(radius, 3) / 3
+	if expectedVolume != actualVolume {
+		t.Errorf("Expected sphere volume should be %f. However, actual sphere volume is wrongly computed as %f.", expectedVolume, actualVolume)
 	}
-	actual_surface_area := sphere.get_surface_area()
-	expected_surface_area := 4 * math.Pi * math.Pow(radius, 2)
-	if expected_surface_area != actual_surface_area {
-		t.Errorf("Expected sphere surface area should be %f. However, actual sphere surface area is wrongly computed as %f.", expected_surface_area, actual_surface_area)
+	actualSurfaceArea := sphere.getSurfaceArea()
+	expectedSurfaceArea := 4 * math.Pi * math.Pow(radius, 2)
+	if expectedSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected sphere surface area should be %f. However, actual sphere surface area is wrongly computed as %f.", expectedSurfaceArea, actualSurfaceArea)
 	}
 }
 
 func TestCube(t *testing.T) {
 	side := rand.Float64() * float64(rand.Int())
-	base_square_area := math.Pow(side, 2)
-	base_square_perimeter := 4 * side
+	baseSquareArea := math.Pow(side, 2)
+	baseSquarePerimeter := 4 * side
 
 	cube := makeCube(side)
-	actual_volume := cube.get_volume()
-	expected_prism_volume := side * base_square_area
-	if expected_prism_volume != actual_volume {
-		t.Errorf("Expected cube volume should be %f. However, actual cube volume is wrongly computed as %f.", expected_prism_volume, actual_volume)
+	actualVolume := cube.getVolume()
+	expectedPrismVolume := side * baseSquareArea
+	if expectedPrismVolume != actualVolume {
+		t.Errorf("Expected cube volume should be %f. However, actual cube volume is wrongly computed as %f.", expectedPrismVolume, actualVolume)
 	}
-	actual_surface_area := cube.get_surface_area()
-	expected_prism_surface_area := 2*base_square_area + side*base_square_perimeter
-	if expected_prism_surface_area != actual_surface_area {
-		t.Errorf("Expected cube surface area should be %f. However, actual cube surface area is wrongly computed as %f.", expected_prism_surface_area, actual_surface_area)
+	actualSurfaceArea := cube.getSurfaceArea()
+	expectedPrismSurfaceArea := 2*baseSquareArea + side*baseSquarePerimeter
+	if expectedPrismSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected cube surface area should be %f. However, actual cube surface area is wrongly computed as %f.", expectedPrismSurfaceArea, actualSurfaceArea)
 	}
-	expected_calculated_volume := math.Pow(side, 3)
-	if expected_calculated_volume != actual_volume {
-		t.Errorf("Expected cube volume should be %f. However, actual cube volume is wrongly computed as %f.", expected_calculated_volume, actual_volume)
+	expectedCalculatedVolume := math.Pow(side, 3)
+	if expectedCalculatedVolume != actualVolume {
+		t.Errorf("Expected cube volume should be %f. However, actual cube volume is wrongly computed as %f.", expectedCalculatedVolume, actualVolume)
 	}
-	expected_calculated_surface_area := 6 * math.Pow(side, 2)
-	if expected_calculated_surface_area != actual_surface_area {
-		t.Errorf("Expected cube surface area should be %f. However, actual cube surface area is wrongly computed as %f.", expected_calculated_surface_area, actual_surface_area)
+	expectedCalculatedSurfaceArea := 6 * math.Pow(side, 2)
+	if expectedCalculatedSurfaceArea != actualSurfaceArea {
+		t.Errorf("Expected cube surface area should be %f. However, actual cube surface area is wrongly computed as %f.", expectedCalculatedSurfaceArea, actualSurfaceArea)
 	}
 }

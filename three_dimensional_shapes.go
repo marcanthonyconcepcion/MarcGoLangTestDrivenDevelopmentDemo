@@ -1,15 +1,14 @@
-/*
- * Copyright (c) 2021.
- * Marc Concepcion
- * marcanthonyconcepcion@gmail.com
- */
+// Package MarcGoLangTestDrivenDevelopmentDemo
+// Copyright (c) 2021.
+// Marc Concepcion
+// marcanthonyconcepcion@gmail.com
 package MarcGoLangTestDrivenDevelopmentDemo
 
 import "math"
 
 type ThreeDimensionalShape interface {
-	get_volume() float64
-	get_surface_area() float64
+	getVolume() float64
+	getSurfaceArea() float64
 }
 
 type Prism struct {
@@ -20,11 +19,11 @@ type Prism struct {
 func makePrism(height float64, shape TwoDimensionalShape) Prism {
 	return Prism{height, shape}
 }
-func (prism Prism) get_volume() float64 {
-	return prism.height * prism.TwoDimensionalShape.get_area()
+func (prism Prism) getVolume() float64 {
+	return prism.height * prism.TwoDimensionalShape.getArea()
 }
-func (prism Prism) get_surface_area() float64 {
-	return 2*prism.TwoDimensionalShape.get_area() + prism.height*prism.TwoDimensionalShape.get_perimeter()
+func (prism Prism) getSurfaceArea() float64 {
+	return 2*prism.TwoDimensionalShape.getArea() + prism.height*prism.TwoDimensionalShape.getPerimeter()
 }
 
 type RectangularPrism struct {
@@ -34,11 +33,11 @@ type RectangularPrism struct {
 func makeRectangularPrism(length float64, width float64, height float64) RectangularPrism {
 	return RectangularPrism{makePrism(height, Rectangle{length, width})}
 }
-func (rectangularPrism RectangularPrism) get_volume() float64 {
-	return rectangularPrism.height * rectangularPrism.TwoDimensionalShape.get_area()
+func (rectangularPrism RectangularPrism) getVolume() float64 {
+	return rectangularPrism.height * rectangularPrism.TwoDimensionalShape.getArea()
 }
-func (rectangularPrism RectangularPrism) get_surface_area() float64 {
-	return 2*rectangularPrism.TwoDimensionalShape.get_area() + rectangularPrism.height*rectangularPrism.TwoDimensionalShape.get_perimeter()
+func (rectangularPrism RectangularPrism) getSurfaceArea() float64 {
+	return 2*rectangularPrism.TwoDimensionalShape.getArea() + rectangularPrism.height*rectangularPrism.TwoDimensionalShape.getPerimeter()
 }
 
 type TriangularPrism struct {
@@ -48,11 +47,11 @@ type TriangularPrism struct {
 func makeTriangularPrism(a float64, b float64, c float64, height float64) TriangularPrism {
 	return TriangularPrism{makePrism(height, Triangle{a, b, c})}
 }
-func (triangularPrism TriangularPrism) get_volume() float64 {
-	return triangularPrism.height * triangularPrism.TwoDimensionalShape.get_area()
+func (triangularPrism TriangularPrism) getVolume() float64 {
+	return triangularPrism.height * triangularPrism.TwoDimensionalShape.getArea()
 }
-func (triangularPrism TriangularPrism) get_surface_area() float64 {
-	return 2*triangularPrism.TwoDimensionalShape.get_area() + triangularPrism.height*triangularPrism.TwoDimensionalShape.get_perimeter()
+func (triangularPrism TriangularPrism) getSurfaceArea() float64 {
+	return 2*triangularPrism.TwoDimensionalShape.getArea() + triangularPrism.height*triangularPrism.TwoDimensionalShape.getPerimeter()
 }
 
 type Cylinder struct {
@@ -62,21 +61,21 @@ type Cylinder struct {
 func makeCylinder(height float64, radius float64) Cylinder {
 	return Cylinder{makePrism(height, Circle{radius})}
 }
-func (cylinder Cylinder) get_volume() float64 {
-	return cylinder.height * cylinder.TwoDimensionalShape.get_area()
+func (cylinder Cylinder) getVolume() float64 {
+	return cylinder.height * cylinder.TwoDimensionalShape.getArea()
 }
-func (cylinder Cylinder) get_surface_area() float64 {
-	return 2*cylinder.TwoDimensionalShape.get_area() + cylinder.height*cylinder.TwoDimensionalShape.get_perimeter()
+func (cylinder Cylinder) getSurfaceArea() float64 {
+	return 2*cylinder.TwoDimensionalShape.getArea() + cylinder.height*cylinder.TwoDimensionalShape.getPerimeter()
 }
 
 type Sphere struct {
 	radius float64
 }
 
-func (sphere Sphere) get_volume() float64 {
+func (sphere Sphere) getVolume() float64 {
 	return 4 * math.Pi * math.Pow(sphere.radius, 3) / 3
 }
-func (sphere Sphere) get_surface_area() float64 {
+func (sphere Sphere) getSurfaceArea() float64 {
 	return 4 * math.Pi * math.Pow(sphere.radius, 2)
 }
 
@@ -87,9 +86,9 @@ type Cube struct {
 func makeCube(side float64) Cube {
 	return Cube{makeRectangularPrism(side, side, side)}
 }
-func (cube Cube) get_volume() float64 {
-	return cube.RectangularPrism.get_volume()
+func (cube Cube) getVolume() float64 {
+	return cube.RectangularPrism.getVolume()
 }
-func (cube Cube) get_surface_area() float64 {
-	return cube.RectangularPrism.get_surface_area()
+func (cube Cube) getSurfaceArea() float64 {
+	return cube.RectangularPrism.getSurfaceArea()
 }

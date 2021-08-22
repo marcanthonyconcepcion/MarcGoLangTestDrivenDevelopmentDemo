@@ -1,8 +1,7 @@
-/*
- * Copyright (c) 2021.
- * Marc Concepcion
- * marcanthonyconcepcion@gmail.com
- */
+// Package MarcGoLangTestDrivenDevelopmentDemo
+// Copyright (c) 2021.
+// Marc Concepcion
+// marcanthonyconcepcion@gmail.com
 package MarcGoLangTestDrivenDevelopmentDemo
 
 import (
@@ -11,8 +10,8 @@ import (
 )
 
 type TwoDimensionalShape interface {
-	get_area() float64
-	get_perimeter() float64
+	getArea() float64
+	getPerimeter() float64
 }
 
 type Rectangle struct {
@@ -20,10 +19,10 @@ type Rectangle struct {
 	width  float64
 }
 
-func (rectangle Rectangle) get_area() float64 {
+func (rectangle Rectangle) getArea() float64 {
 	return rectangle.length * rectangle.width
 }
-func (rectangle Rectangle) get_perimeter() float64 {
+func (rectangle Rectangle) getPerimeter() float64 {
 	return 2*rectangle.length + 2*rectangle.width
 }
 
@@ -31,10 +30,10 @@ type Circle struct {
 	radius float64
 }
 
-func (circle Circle) get_area() float64 {
+func (circle Circle) getArea() float64 {
 	return math.Pi * math.Pow(circle.radius, 2)
 }
-func (circle Circle) get_perimeter() float64 {
+func (circle Circle) getPerimeter() float64 {
 	return 2 * math.Pi * circle.radius
 }
 
@@ -46,11 +45,11 @@ type Square struct {
 func makeSquare(side float64) Square {
 	return Square{side, Rectangle{length: side, width: side}}
 }
-func (square Square) get_area() float64 {
-	return square.Rectangle.get_area()
+func (square Square) getArea() float64 {
+	return square.Rectangle.getArea()
 }
-func (square Square) get_perimeter() float64 {
-	return square.Rectangle.get_perimeter()
+func (square Square) getPerimeter() float64 {
+	return square.Rectangle.getPerimeter()
 }
 
 type Triangle struct {
@@ -66,10 +65,10 @@ func makeTriangle(a float64, b float64, c float64) (*Triangle, error) {
 	return &Triangle{a, b, c}, nil
 }
 
-func (triangle Triangle) get_area() float64 {
-	half_perimeter := triangle.get_perimeter() / 2
-	return math.Sqrt(half_perimeter * (half_perimeter - triangle.a) * (half_perimeter - triangle.b) * (half_perimeter - triangle.c))
+func (triangle Triangle) getArea() float64 {
+	halfPerimeter := triangle.getPerimeter() / 2
+	return math.Sqrt(halfPerimeter * (halfPerimeter - triangle.a) * (halfPerimeter - triangle.b) * (halfPerimeter - triangle.c))
 }
-func (triangle Triangle) get_perimeter() float64 {
+func (triangle Triangle) getPerimeter() float64 {
 	return triangle.a + triangle.b + triangle.c
 }
